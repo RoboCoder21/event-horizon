@@ -49,7 +49,7 @@ const Footer = () => {
               className="inline-block text-3xl font-display font-bold text-gradient-gold mb-6"
               whileHover={{ scale: 1.05 }}
             >
-              ETERNAL<span className="text-foreground">.</span>
+              MAGNA<span className="text-foreground">.</span>
             </motion.a>
             <p className="text-muted-foreground mb-6 max-w-sm">
               Creating extraordinary experiences through world-class event 

@@ -97,10 +97,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button variant="gold" size="xl" className="group">
-              Get a Quote
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </Button>
+
             <Button variant="glass" size="xl" className="group">
               <Play size={18} className="mr-2" />
               Watch Showreel
@@ -115,8 +112,8 @@ const HeroSection = () => {
             className="flex flex-wrap items-center justify-center gap-8 md:gap-16 mt-20"
           >
             {[
-              { value: "500+", label: "Events Produced" },
-              { value: "12+", label: "Years Experience" },
+              { value: "100+", label: "Events Produced" },
+              { value: "5+", label: "Years Experience" },
               { value: "98%", label: "Client Satisfaction" },
             ].map((stat, index) => (
               <div key={index} className="text-center">

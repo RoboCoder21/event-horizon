@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Award, Users, Calendar, Star } from "lucide-react";
 
 const stats = [
-  { icon: Calendar, value: "500+", label: "Events Produced" },
-  { icon: Users, value: "200+", label: "Happy Clients" },
-  { icon: Award, value: "15+", label: "Industry Awards" },
-  { icon: Star, value: "12+", label: "Years of Excellence" },
+  { icon: Calendar, value: "100+", label: "Events Produced" },
+  { icon: Users, value: "100+", label: "Happy Clients" },
+  { icon: Award, value: "3+", label: "Industry Awards" },
+  { icon: Star, value: "5+", label: "Years of Excellence" },
 ];
 
 const AboutSection = () => {
@@ -64,21 +64,22 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-gold text-sm font-semibold tracking-wider uppercase mb-4 block">
-              About Us
+              ABOUT
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Where Vision Meets <span className="text-gradient-gold">Excellence</span>
+              MAGNA
             </h2>
             <p className="text-muted-foreground text-lg mb-6">
-              For over a decade, we've been at the forefront of event production 
-              in Ethiopia, transforming ordinary gatherings into extraordinary 
-              experiences that leave lasting impressions.
+              Magna is a leader in media production and event planning in the area, having demonstrated excellence over 
+              the years. With extensive industry knowledge and practical experience planning everything from public fes-
+              tivals and brand activations to corporate summits and concerts, we specialize in full-service event manage-
+              ment.
             </p>
             <p className="text-muted-foreground mb-8">
-              Our team of passionate professionals brings together creativity, 
-              technical expertise, and meticulous attention to detail. From 
-              intimate weddings to large-scale corporate events, we approach 
-              every project with the same commitment to excellence.
+              For events of any size, our technical arm provides top-notch sound systems, LED screens, and clever lighting 
+              designed to create captivating environments. In addition, our video production department creates power-
+              ful content, such as commercials, documentaries, live switching, and multi-platform streaming, to make 
+              sure your story is conveyed with imagination, clarity, and cinematic accuracy.
             </p>
 
             {/* Stats Grid */}

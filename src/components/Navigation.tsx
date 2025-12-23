@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "../logofile/yeme new-02.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -36,10 +37,15 @@ const Navigation = () => {
         {/* Logo */}
         <motion.a
           href="#home"
-          className="text-2xl font-display font-bold text-gradient-gold"
+          className="flex items-center"
           whileHover={{ scale: 1.05 }}
         >
-          ETERNAL<span className="text-foreground">.</span>
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-10 w-auto object-contain"
+            style={{ maxHeight: 40 }}
+          />
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -57,9 +63,7 @@ const Navigation = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300" />
             </motion.a>
           ))}
-          <Button variant="gold" size="lg">
-            Get a Quote
-          </Button>
+
         </nav>
 
         {/* Mobile Menu Button */}
