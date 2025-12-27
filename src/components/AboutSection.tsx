@@ -1,104 +1,118 @@
 import { motion } from "framer-motion";
-import { Award, Users, Calendar, Star } from "lucide-react";
+import { Award, Layers, MapPinned, Sparkles } from "lucide-react";
 
-const stats = [
-  { icon: Calendar, value: "100+", label: "Events Produced" },
-  { icon: Users, value: "100+", label: "Happy Clients" },
-  { icon: Award, value: "3+", label: "Industry Awards" },
-  { icon: Star, value: "5+", label: "Years of Excellence" },
+const milestones = [
+  {
+    title: "Built for shows and screens",
+    detail: "Production, film, and digital teams in one pipeline so every output feels consistent.",
+  },
+  {
+    title: "On the ground, anywhere",
+    detail: "Touring crews, scenic partners, and broadcast control built to travel.",
+  },
+  {
+    title: "Outcome obsessed",
+    detail: "We map success on audience impact—not just delivery checklists.",
+  },
+];
+
+const proof = [
+  { icon: Award, value: "10+", label: "Flagship launches per year" },
+  { icon: Sparkles, value: "98%", label: "Projects on-time" },
+  { icon: Layers, value: "Multi-crew", label: "Stage / film / web" },
+  { icon: MapPinned, value: "6 countries", label: "Delivered in region" },
 ];
 
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-y-1/2" />
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-electric/5 rounded-full blur-3xl -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/6 rounded-full blur-3xl -translate-y-1/2" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-electric/6 rounded-full blur-3xl -translate-y-1/2" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Image/Visual */}
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          {/* Left - Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Main image */}
-              <div className="absolute inset-8 rounded-3xl overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80"
-                  alt="Event production team"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-gold/30 rounded-tl-3xl" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-gold/30 rounded-br-3xl" />
-              
-              {/* Floating stat card */}
+            <div className="relative aspect-[4/5] max-w-xl mx-auto rounded-[32px] overflow-hidden border border-[hsl(var(--gold)_/_0.25)] shadow-2xl shadow-black/40">
+              <img
+                src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?w=1000&q=80"
+                alt="Production crew at work"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent" />
+              <div className="absolute top-5 left-5 glass px-4 py-2 rounded-full text-xs uppercase tracking-[0.25em] text-muted-foreground">On-site ops</div>
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="absolute -bottom-4 -right-4 glass-strong rounded-2xl p-6"
+                transition={{ delay: 0.2 }}
+                className="absolute bottom-4 right-4 glass-strong rounded-2xl p-4"
               >
-                <div className="text-3xl font-display font-bold text-gradient-gold">98%</div>
-                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Crew</p>
+                <p className="text-lg font-display font-semibold">Directors, engineers, and storytellers in sync.</p>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Right - Content */}
+          {/* Right - Narrative */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-7 space-y-6"
           >
-            <span className="text-gold text-sm font-semibold tracking-wider uppercase mb-4 block">
-              ABOUT
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              MAGNA
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">About Magna</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
+              We engineer experiences that travel beyond the venue.
             </h2>
-            <p className="text-muted-foreground text-lg mb-6">
-              Magna is a leader in media production and event planning in the area, having demonstrated excellence over 
-              the years. With extensive industry knowledge and practical experience planning everything from public fes-
-              tivals and brand activations to corporate summits and concerts, we specialize in full-service event manage-
-              ment.
-            </p>
-            <p className="text-muted-foreground mb-8">
-              For events of any size, our technical arm provides top-notch sound systems, LED screens, and clever lighting 
-              designed to create captivating environments. In addition, our video production department creates power-
-              ful content, such as commercials, documentaries, live switching, and multi-platform streaming, to make 
-              sure your story is conveyed with imagination, clarity, and cinematic accuracy.
+            <p className="text-muted-foreground text-lg">
+              Magna is an event and media company built on broadcast discipline. We combine creative direction, stagecraft, and post-production under one roof to keep momentum from idea to opening night and the content that follows.
             </p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
+            <div className="space-y-4">
+              {milestones.map((item, idx) => (
                 <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={item.title}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4"
+                  transition={{ delay: idx * 0.08 }}
+                  className="flex gap-4"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                    <stat.icon className="w-6 h-6 text-gold" />
+                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--gold)_/_0.12)] border border-[hsl(var(--gold)_/_0.3)] flex items-center justify-center text-sm font-semibold">0{idx + 1}</div>
+                  <div>
+                    <h3 className="text-lg font-display font-semibold">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.detail}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 pt-2">
+              {proof.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.05 }}
+                  className="glass rounded-2xl p-4 flex items-center gap-4 border border-[hsl(var(--gold)_/_0.2)]"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[hsl(var(--gold)_/_0.12)] border border-[hsl(var(--gold)_/_0.3)] flex items-center justify-center">
+                    <item.icon className="w-5 h-5 text-gold" />
                   </div>
                   <div>
-                    <div className="text-2xl font-display font-bold">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-xl font-display font-bold">{item.value}</div>
+                    <div className="text-sm text-muted-foreground">{item.label}</div>
                   </div>
                 </motion.div>
               ))}

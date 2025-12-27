@@ -52,8 +52,7 @@ const Footer = () => {
               MAGNA<span className="text-foreground">.</span>
             </motion.a>
             <p className="text-muted-foreground mb-6 max-w-sm">
-              Creating extraordinary experiences through world-class event 
-              production and media services since 2012.
+              Event, film, and digital crews working as one. We ship experiences that travel beyond the venue.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-4">
@@ -126,7 +125,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Eternal Media. All rights reserved.
+            © {new Date().getFullYear()} Magna. All rights reserved.
           </p>
           
           {/* Back to top */}

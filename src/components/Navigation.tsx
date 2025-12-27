@@ -30,7 +30,7 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass-strong py-4" : "py-6"
+        isScrolled ? "glass-strong py-4 shadow-lg shadow-black/20 backdrop-blur-2xl" : "py-6"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -43,8 +43,8 @@ const Navigation = () => {
           <img
             src={logo}
             alt="Logo"
-            className="h-10 w-auto object-contain"
-            style={{ maxHeight: 40 }}
+            className="h-12 w-auto object-contain"
+            style={{ maxHeight: 56 }}
           />
         </motion.a>
 
@@ -63,7 +63,9 @@ const Navigation = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300" />
             </motion.a>
           ))}
-
+          <Button variant="gold" size="lg" className="ml-4">
+            Start a Project
+          </Button>
         </nav>
 
         {/* Mobile Menu Button */}

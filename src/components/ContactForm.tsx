@@ -89,22 +89,21 @@ const ContactForm = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-gold text-sm font-semibold tracking-wider uppercase mb-4 block">
-              Let's Connect
+              Let’s build your next drop
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Book Your <span className="text-gradient-gold">Event</span>
+              Tell us about the <span className="text-gradient-gold">experience</span> you need.
             </h2>
             <p className="text-muted-foreground text-lg mb-12 max-w-md">
-              Ready to create something extraordinary? Tell us about your vision 
-              and let's start planning your perfect event.
+              Give us the headline, the audience, and the date. We’ll map the story, crew, and tech to deliver it without static.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-6">
               {[
-                { icon: MapPin, label: "Location", value: "Addis Ababa, Ethiopia" },
-                { icon: Phone, label: "Phone", value: "+251 911 234 567" },
-                { icon: Mail, label: "Email", value: "hello@eternalmedia.et" },
+                { icon: MapPin, label: "HQ", value: "Addis Ababa, Ethiopia" },
+                { icon: Phone, label: "Phone", value: "+251 91 123 4567" },
+                { icon: Mail, label: "Email", value: "hello@magna.studio" },
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -135,7 +134,7 @@ const ContactForm = () => {
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="glass-strong rounded-3xl p-8 md:p-10 space-y-6"
+                className="glass-strong rounded-3xl p-8 md:p-10 space-y-6 border border-[hsl(var(--gold)_/_0.2)]"
             >
               {/* Name & Email */}
               <div className="grid sm:grid-cols-2 gap-4">

@@ -1,116 +1,130 @@
 import { motion } from "framer-motion";
-import { 
-  Camera, 
-  Music, 
-  Sparkles, 
-  Users, 
-  Video, 
-  Mic2,
+import {
+  CalendarRange,
+  Clapperboard,
+  Layers,
   Lightbulb,
-  Calendar
+  Radio,
+  Sparkle,
+  Workflow,
+  Zap,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Calendar,
-    title: "Event Planning",
-    description: "Full-service event coordination from concept to execution, ensuring every detail is perfect.",
-  },
-  {
-    icon: Video,
-    title: "Video Production",
-    description: "Cinematic coverage with state-of-the-art equipment for lasting memories.",
-  },
-  {
-    icon: Camera,
-    title: "Photography",
-    description: "Professional photography that captures the essence and emotion of your event.",
-  },
-  {
     icon: Lightbulb,
-    title: "Lighting Design",
-    description: "Custom lighting installations that transform venues into immersive experiences.",
+    title: "Creative & strategy",
+    description: "Concept, story, and visual language that anchor every experience.",
+    meta: "Branding / art direction / scripting",
   },
   {
-    icon: Music,
-    title: "Sound Engineering",
-    description: "Crystal-clear audio systems and expert sound management for any venue size.",
+    icon: CalendarRange,
+    title: "Event solutions",
+    description: "End-to-end shows, summits, launches, and award nights—planned and run by one crew.",
+    meta: "Run of show / talent / stagecraft",
   },
   {
-    icon: Mic2,
-    title: "Live Streaming",
-    description: "Professional broadcast quality streaming to reach audiences worldwide.",
+    icon: Clapperboard,
+    title: "Audio + video",
+    description: "Cinematic capture, live switching, multicam streaming, and fast post drops.",
+    meta: "TVC / docu / livestream / highlight films",
   },
   {
-    icon: Sparkles,
-    title: "Stage Design",
-    description: "Stunning stage concepts and fabrication that command attention.",
+    icon: Radio,
+    title: "Broadcast & streaming",
+    description: "Control rooms that sync with your platforms—studio or on-site anywhere.",
+    meta: "Hybrid events / broadcast engineering",
   },
   {
-    icon: Users,
-    title: "Artist Management",
-    description: "End-to-end talent coordination and hospitality services.",
+    icon: Layers,
+    title: "Scenic & lighting",
+    description: "Stage design, LED, lighting design, and show cues that move with the music.",
+    meta: "Fabrication / rigging / pixels / cues",
+  },
+  {
+    icon: Zap,
+    title: "Experience ops",
+    description: "Touring crews, technical riders, logistics, and vendor orchestration.",
+    meta: "Production management / touring",
+  },
+  {
+    icon: Sparkle,
+    title: "Digital rollouts",
+    description: "Launch pages, motion systems, and campaign assets that extend the moment online.",
+    meta: "Web / motion / social kits",
+  },
+  {
+    icon: Workflow,
+    title: "Content lab",
+    description: "Editors, animators, and color working in lockstep with the show floor.",
+    meta: "Edit bays / VFX / color",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal/50 to-background" />
-      
+    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal/60 to-background" />
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(115deg, transparent 0, transparent 48%, hsl(var(--gold) / 0.25) 50%, transparent 52%, transparent 100%)",
+          backgroundSize: "240px 240px",
+        }}
+      />
+
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="text-gold text-sm font-semibold tracking-wider uppercase mb-4 block">
-            What We Offer
-          </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            Premium <span className="text-gradient-gold">Services</span>
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            From intimate gatherings to large-scale productions, we deliver 
-            excellence across every aspect of event creation.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-4 space-y-6"
+          >
+            <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Services</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
+              Full-stack production with a <span className="text-gradient-gold">single point of control.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              One team aligned on story, staging, cameras, light, and delivery. We keep creative, technical, and logistics under the same roof so your show never loses its signal.
+            </p>
+            <div className="glass rounded-2xl p-5 border border-[hsl(var(--gold)_/_0.25)]">
+              <p className="text-sm text-muted-foreground uppercase tracking-[0.25em]">What clients say</p>
+              <p className="mt-3 text-foreground text-lg leading-relaxed">
+                “Zero hand-offs, fast decisions, and a crew that can pivot live. Magna feels like an in-house engine.”
+              </p>
+            </div>
+          </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group relative"
-            >
-              <div className="glass rounded-2xl p-8 h-full transition-all duration-500 group-hover:bg-[hsl(0_0%_100%/0.08)] group-hover:border-gold/30">
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center mb-6 group-hover:glow-gold transition-all duration-500">
-                  <service.icon className="w-7 h-7 text-gold" />
+          <div className="lg:col-span-8 grid md:grid-cols-2 gap-4">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ y: -6 }}
+                className="group glass rounded-2xl p-6 border border-transparent hover:border-[hsl(var(--gold)_/_0.35)] transition-all duration-500"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-[hsl(var(--gold)_/_0.12)] border border-[hsl(var(--gold)_/_0.3)] flex items-center justify-center">
+                    <service.icon className="h-6 w-6 text-gold" />
+                  </div>
+                  <span className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">0{index + 1}</span>
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-gold transition-colors duration-300">
+                <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-gold transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                   {service.description}
                 </p>
-
-                {/* Hover accent line */}
-                <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </motion.div>
-          ))}
+                <p className="text-xs uppercase tracking-[0.2em] text-foreground/70">{service.meta}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
