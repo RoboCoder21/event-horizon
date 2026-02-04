@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import projectImg1 from "@/images/IMG_0560.jpg";
+import projectImg2 from "@/images/IMG_0897.jpg";
+import projectImg3 from "@/images/IMG_2279.jpg";
+import projectImg4 from "@/images/d258d29c-55b5-4554-8ed9-3387151edeee.jpg";
+import projectImg5 from "@/images/f55db937-43b3-4cfb-8bfd-82dfcbb23013.jpg";
+import projectImg6 from "@/images/8e749a6b-d2be-4917-b692-3ac3112bff12.jpg";
 
 const categories = ["All", "Corporate", "Wedding", "Concert", "Festival"];
 
@@ -10,42 +16,42 @@ const projects = [
     title: "Tech Summit 2024",
     client: "Innovation Corp",
     category: "Corporate",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+    image: projectImg1,
   },
   {
     id: 2,
     title: "Garden Ceremony",
     client: "Sarah & Michael",
     category: "Wedding",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+    image: projectImg2,
   },
   {
     id: 3,
     title: "Electric Nights Tour",
     client: "Universal Music",
     category: "Concert",
-    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
+    image: projectImg3,
   },
   {
     id: 4,
     title: "Annual Gala Dinner",
     client: "Luxury Hotels Group",
     category: "Corporate",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
+    image: projectImg4,
   },
   {
     id: 5,
     title: "Summer Music Festival",
     client: "City Events",
     category: "Festival",
-    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",
+    image: projectImg5,
   },
   {
     id: 6,
     title: "Elegant Reception",
     client: "Emma & James",
     category: "Wedding",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+    image: projectImg6,
   },
 ];
 

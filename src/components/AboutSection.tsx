@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Award, Layers, MapPinned, Sparkles } from "lucide-react";
+import crewImage from "@/images/IMG_0777.jpg";
 
 const milestones = [
   {
@@ -43,7 +44,7 @@ const AboutSection = () => {
           >
             <div className="relative aspect-[4/5] max-w-xl mx-auto rounded-[32px] overflow-hidden border border-[hsl(var(--gold)_/_0.25)] shadow-2xl shadow-black/40">
               <img
-                src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?w=1000&q=80"
+                src={crewImage}
                 alt="Production crew at work"
                 className="w-full h-full object-cover"
               />
