@@ -1,13 +1,8 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/images/IMG_0272.jpg";
-
-const heroStats = [
-  { value: "120+", label: "Launches + shows" },
-  { value: "6 countries", label: "Delivered experiences" },
-  { value: "4.9/5", label: "Partner rating" },
-];
+import heroImage from "@/images/IMG_0272 - Copy.jpg";
 
 const capabilities = [
   "Branding & creative",
@@ -17,8 +12,20 @@ const capabilities = [
   "Experience strategy",
 ];
 
-const headlineWords = "Creativity sails through every project—".split(" ");
-const accentLine = "we steer ideas into experiences.";
+const headlinePhrases = [
+  "Launch bold moments.",
+  "Stage. Stream. Drop.",
+  "Make every cue land.",
+];
+
+const subtextPhrases = [
+  "One crew for live, broadcast, and post—no hand-offs, no drift.",
+  "Concept to cue calls to the final export. Fast, aligned, done.",
+  "Stories that hit the room and the replay—on time, on brand.",
+];
+
+const ctaPhrases = ["Start a project", "Book a call", "Plan your launch"];
+
 const headingVariants = {
   hidden: {},
   visible: {
@@ -51,105 +58,154 @@ const pillVariants = {
 };
 
 const HeroSection = () => {
+  const [headlineIndex, setHeadlineIndex] = useState(0);
+  const [subtextIndex, setSubtextIndex] = useState(0);
+  const [ctaIndex, setCtaIndex] = useState(0);
+
+  useEffect(() => {
+    const headTimer = setInterval(() => {
+      setHeadlineIndex((i) => (i + 1) % headlinePhrases.length);
+    }, 3400);
+    const subTimer = setInterval(() => {
+      setSubtextIndex((i) => (i + 1) % subtextPhrases.length);
+    }, 4200);
+    const ctaTimer = setInterval(() => {
+      setCtaIndex((i) => (i + 1) % ctaPhrases.length);
+    }, 5200);
+    return () => {
+      clearInterval(headTimer);
+      clearInterval(subTimer);
+      clearInterval(ctaTimer);
+    };
+  }, []);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Layered background with full-bleed image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="Stage production backdrop"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover brightness-75 contrast-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/82 via-background/48 to-transparent" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 20%, hsl(var(--gold) / 0.25), transparent 34%)," +
+              "radial-gradient(circle at 78% 12%, hsl(var(--electric-blue) / 0.18), transparent 30%)," +
+              "radial-gradient(circle at 62% 78%, hsl(var(--gold) / 0.22), transparent 28%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, hsl(var(--gold) / 0.26) 1px, transparent 1px)," +
+              "linear-gradient(0deg, hsl(var(--gold) / 0.16) 1px, transparent 1px)",
+            backgroundSize: "120px 120px",
+          }}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-charcoal/80 to-background" />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 20%, hsl(var(--gold) / 0.25), transparent 30%)," +
-            "radial-gradient(circle at 80% 10%, hsl(var(--electric-blue) / 0.18), transparent 28%)," +
-            "radial-gradient(circle at 60% 80%, hsl(var(--gold) / 0.15), transparent 25%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, hsl(var(--gold) / 0.3) 1px, transparent 1px)," +
-            "linear-gradient(0deg, hsl(var(--gold) / 0.15) 1px, transparent 1px)",
-          backgroundSize: "120px 120px",
-        }}
-      />
 
       <div className="container mx-auto px-6 relative z-10 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          {/* Narrative */}
-          <div className="lg:col-span-12 space-y-8 max-w-5xl">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center justify-center">
+          <div className="lg:col-span-10 space-y-8 max-w-5xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 glass px-4 py-2 rounded-full"
+              className="inline-flex items-center gap-3 glass rounded-full px-4 py-2 text-xs uppercase tracking-[0.25em] text-muted-foreground"
             >
               <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+              Live + Hybrid + Film
             </motion.div>
 
             <motion.h1
               variants={headingVariants}
               initial="hidden"
               animate="visible"
-              className="text-5xl md:text-6xl xl:text-7xl font-display font-bold leading-[1.05] flex flex-wrap gap-x-3"
+              className="text-5xl md:text-6xl xl:text-7xl font-display font-bold leading-[1.05]"
             >
-              {headlineWords.map((word, wordIndex) => (
+              <AnimatePresence mode="wait">
                 <motion.span
-                  key={`${word}-${wordIndex}`}
-                  variants={wordVariants}
-                  className="inline-block"
+                  key={headlinePhrases[headlineIndex]}
+                  initial={{ opacity: 0, y: 26, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -22, filter: "blur(6px)" }}
+                  transition={{ duration: 0.65, ease: "easeOut" }}
+                  className="inline-block text-gradient-gold"
                 >
-                  {word}
-                  <span className="inline-block w-2" aria-hidden="true">
-                    
-                  </span>
+                  {headlinePhrases[headlineIndex]}
                 </motion.span>
-              ))}
-              <motion.span variants={wordVariants} className="inline-block">
-                <motion.span
-                  className="text-gradient-gold"
-                  style={{ backgroundSize: "220% 220%" }}
-                  animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 1.2 }}
-                >
-                  {accentLine}
-                </motion.span>
-              </motion.span>
+              </AnimatePresence>
             </motion.h1>
 
             <motion.p
               variants={contentVariants}
               initial="hidden"
               animate="visible"
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-2xl"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl min-h-[70px]"
             >
-              Magna blends stagecraft, film, and digital to launch moments people remember. From strategy to on-site ops to
-              the final cut, we keep every detail moving in one current.
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={subtextPhrases[subtextIndex]}
+                  initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -16, filter: "blur(6px)" }}
+                  transition={{ duration: 0.55, ease: "easeOut" }}
+                  className="inline-block"
+                >
+                  {subtextPhrases[subtextIndex]}
+                </motion.span>
+              </AnimatePresence>
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
-            />
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Button
+                variant="gold"
+                size="lg"
+                asChild
+                className="shadow-[0_25px_60px_hsl(43_74%_49%/0.3)]"
+              >
+                <a href="#contact" className="flex items-center gap-2">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={ctaPhrases[ctaIndex]}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      {ctaPhrases[ctaIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button variant="glass" size="lg" asChild className="border border-[hsl(var(--gold)_/_0.3)]">
+                <a href="#portfolio">
+                  <Play className="h-5 w-5" />
+                  View portfolio
+                </a>
+              </Button>
+            </motion.div>
 
             <motion.div
               variants={pillContainerVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-3 justify-center"
             >
               {capabilities.map((item) => (
                 <motion.span
@@ -161,25 +217,10 @@ const HeroSection = () => {
                 </motion.span>
               ))}
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="grid sm:grid-cols-3 gap-4 mt-6"
-            >
-              {heroStats.map((stat) => (
-                <div key={stat.label} className="glass rounded-2xl p-4 sm:p-5">
-                  <div className="text-2xl font-display font-bold text-gradient-gold">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-wide text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

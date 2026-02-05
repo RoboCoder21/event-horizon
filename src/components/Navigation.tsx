@@ -9,6 +9,8 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Portfolio", href: "#portfolio" },
   { name: "About", href: "#about" },
+  { name: "Team", href: "#team" },
+  { name: "Clients", href: "#clients" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -43,8 +45,8 @@ const Navigation = () => {
           <img
             src={logo}
             alt="Logo"
-            className="h-12 w-auto object-contain"
-            style={{ maxHeight: 56 }}
+            className="h-20 w-auto object-contain"
+            style={{ maxHeight: 120 }}
           />
         </motion.a>
 
@@ -63,9 +65,7 @@ const Navigation = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300" />
             </motion.a>
           ))}
-          <Button variant="gold" size="lg" className="ml-4">
-            Start a Project
-          </Button>
+   
         </nav>
 
         {/* Mobile Menu Button */}
@@ -97,9 +97,7 @@ const Navigation = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="gold" size="lg" className="mt-4">
-                Get a Quote
-              </Button>
+
             </nav>
           </motion.div>
         )}
