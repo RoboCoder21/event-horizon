@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion, useAnimationControls, useMotionValue } from "framer-motion";
+import { animate, motion, useMotionValue } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import embassyLogo from "@/client logos/EMBASSY_OF_THE_KUWAIT.png";
 import ethioTelecomLogo from "@/client logos/Ethio telecom.jpg";
@@ -21,11 +21,10 @@ const clients = [
 
 const ClientsSection = () => {
   const [logoRatios, setLogoRatios] = useState<Record<string, number>>({});
-  const [isDragging, setIsDragging] = useState(false);
-  const controls = useAnimationControls();
   const x = useMotionValue(0);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const loopRef = useRef<ReturnType<typeof animate> | null>(null);
 
   const getLoopDistance = useCallback(() => {
     if (!trackRef.current) return 1200;
@@ -35,22 +34,26 @@ const ClientsSection = () => {
   const startLoop = useCallback(
     (fromX?: number) => {
       const distance = getLoopDistance();
+      if (distance <= 0) return;
+
       const start = fromX ?? x.get();
       const speed = 140; // px per second
-      const duration = Math.max(distance / speed, 6);
+      const duration = Math.max(distance / speed, 1.5);
 
-      controls.start({
-        x: start - distance,
-        transition: {
-          duration,
-          ease: "linear",
+      // Stop any existing loop
+      loopRef.current?.stop();
+
+      loopRef.current = animate(x, start - distance, {
+        duration,
+        ease: "linear",
+        onComplete: () => {
+          // wrap back to zero to avoid drifting off-screen
+          x.set(0);
+          startLoop(0);
         },
-      }).then(() => {
-        // When a cycle ends, continue from the new position
-        startLoop();
       });
     },
-    [controls, getLoopDistance, x]
+    [getLoopDistance, x]
   );
 
   const handleLogoLoad = (name: string) => (event: React.SyntheticEvent<HTMLImageElement>) => {
@@ -64,6 +67,9 @@ const ClientsSection = () => {
   useEffect(() => {
     // Start marquee loop on mount
     startLoop(0);
+    return () => {
+      loopRef.current?.stop();
+    };
   }, [startLoop]);
 
   return (
@@ -93,18 +99,23 @@ const ClientsSection = () => {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            animate={controls}
             drag="x"
             dragConstraints={{ left: -4000, right: 4000 }}
             dragElastic={0.12}
             dragMomentum={true}
             onDragStart={() => {
-              setIsDragging(true);
-              controls.stop();
+              loopRef.current?.stop();
             }}
             onDragEnd={() => {
-              setIsDragging(false);
-              startLoop(x.get());
+              const distance = getLoopDistance();
+              if (distance > 0) {
+                // Normalize current offset to stay within the visible window
+                const current = x.get();
+                const normalized = ((current % distance) + distance) % distance;
+                const resumeFrom = -normalized;
+                x.set(resumeFrom);
+                startLoop(resumeFrom);
+              }
             }}
             className="flex gap-12 py-8 px-8 cursor-grab active:cursor-grabbing"
           >
