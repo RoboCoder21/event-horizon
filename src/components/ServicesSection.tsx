@@ -90,12 +90,7 @@ const ServicesSection = () => {
             <p className="text-muted-foreground text-lg">
               One team aligned on story, staging, cameras, light, and delivery. We keep creative, technical, and logistics under the same roof so your show never loses its signal.
             </p>
-            <div className="glass rounded-2xl p-5 border border-[hsl(var(--gold)_/_0.25)]">
-              <p className="text-sm text-muted-foreground uppercase tracking-[0.25em]">What clients say</p>
-              <p className="mt-3 text-foreground text-lg leading-relaxed">
-                “Zero hand-offs, fast decisions, and a crew that can pivot live. Magna feels like an in-house engine.”
-              </p>
-            </div>
+     
           </motion.div>
 
           <div className="lg:col-span-8 grid md:grid-cols-2 gap-4">
