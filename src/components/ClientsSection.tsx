@@ -100,6 +100,26 @@ const ClientsSection = () => {
             })}
           </motion.div>
         </div>
+
+        {/* Quick manual scroll strip */}
+        <div className="overflow-x-auto snap-x snap-mandatory rounded-2xl border border-[hsl(var(--gold)_/_0.18)] bg-white/60 px-4 py-4 flex gap-4 shadow-[0_15px_45px_-30px_rgba(0,0,0,0.35)]">
+          {clients.map((client) => (
+            <div
+              key={`manual-${client.name}`}
+              className="snap-start flex shrink-0 items-center gap-3 rounded-xl border border-[hsl(var(--gold)_/_0.2)] bg-white/80 px-4 py-3"
+            >
+              <div className="h-10 w-16 grid place-items-center">
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
+                  className="max-h-10 max-w-16 object-contain"
+                />
+              </div>
+              <span className="text-sm font-medium text-foreground/80 whitespace-nowrap">{client.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
