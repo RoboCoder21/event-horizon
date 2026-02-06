@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import embassyLogo from "@/client logos/EMBASSY_OF_THE_KUWAIT.png";
 import ethioTelecomLogo from "@/client logos/Ethio telecom.jpg";
@@ -33,6 +33,8 @@ const marqueeAnimation = {
 
 const ClientsSection = () => {
   const [logoRatios, setLogoRatios] = useState<Record<string, number>>({});
+  const [isDragging, setIsDragging] = useState(false);
+  const controls = useAnimationControls();
 
   const handleLogoLoad = (name: string) => (event: React.SyntheticEvent<HTMLImageElement>) => {
     const { naturalWidth, naturalHeight } = event.currentTarget;
@@ -41,6 +43,12 @@ const ClientsSection = () => {
       setLogoRatios((prev) => ({ ...prev, [name]: naturalWidth / naturalHeight }));
     }
   };
+
+  useEffect(() => {
+    if (!isDragging) {
+      controls.start("animate");
+    }
+  }, [controls, isDragging]);
 
   return (
     <section id="clients" className="relative py-14 md:py-18 overflow-hidden bg-white text-foreground">
@@ -65,11 +73,18 @@ const ClientsSection = () => {
         <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--gold)_/_0.18)] bg-black/70 shadow-[0_25px_70px_-30px_rgba(0,0,0,0.25)]">
           <motion.div
             variants={marqueeAnimation}
-            animate="animate"
+            animate={controls}
             drag="x"
             dragConstraints={{ left: -4000, right: 4000 }}
             dragElastic={0.12}
-            dragMomentum={false}
+            dragMomentum={true}
+            onDragStart={() => {
+              setIsDragging(true);
+              controls.stop();
+            }}
+            onDragEnd={() => {
+              setIsDragging(false);
+            }}
             className="flex gap-12 py-8 px-8 cursor-grab active:cursor-grabbing"
           >
             {[...clients, ...clients].map((client, index) => {
