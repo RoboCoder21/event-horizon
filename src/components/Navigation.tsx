@@ -18,6 +18,18 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (href: string) => (event: React.MouseEvent) => {
+    if (!href.startsWith("#")) return;
+    event.preventDefault();
+    const target = document.querySelector(href);
+    if (target instanceof HTMLElement) {
+      const offset = 88; // account for fixed header height
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -60,6 +72,7 @@ const Navigation = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
+              onClick={handleNavClick(link.href)}
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300" />
@@ -92,7 +105,7 @@ const Navigation = () => {
                   key={link.name}
                   href={link.href}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={handleNavClick(link.href)}
                 >
                   {link.name}
                 </a>
