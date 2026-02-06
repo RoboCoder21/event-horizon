@@ -81,6 +81,11 @@
     font-family: var(--font-body);
   }
 
+  ::selection {
+    background: hsl(var(--gold));
+    color: #0b0b0b;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
