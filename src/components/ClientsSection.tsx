@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import clientA from "@/images/download.png";
@@ -8,12 +9,16 @@ import clientE from "@/images/e4166970-390a-422d-a108-0f07aeb38c8d.jpg";
 import clientF from "@/images/448b33da-a8c0-42ae-a3ff-c43b3536e530.jpg";
 
 const clients = [
-  { name: "Vertex Mobility", logo: clientA },
-  { name: "Skyline Capital", logo: clientB },
-  { name: "Northwave Media", logo: clientC },
-  { name: "Helix Health", logo: clientD },
-  { name: "Eclipse Energy", logo: clientE },
-  { name: "Circuit Studios", logo: clientF },
+  { name: "KURUFUD EVENT", logo: clientA },
+  { name: "JUBILATION AFRICA", logo: clientB },
+  { name: "ETHIO TELECOM", logo: clientC },
+  { name: "ETHIOPIAN PRESS AGENCY", logo: clientD },
+  { name: "MINISTRY OF AGRICULTURE", logo: clientE },
+  { name: "EMBASSY OF THE STATE OF KUWAIT", logo: clientF },
+  { name: "STARTUP ETHIOPIA", logo: clientA },
+  { name: "ICS ETHIOPIA", logo: clientB },
+  { name: "ETHIOPIAN PRESS AGENCY", logo: clientC },
+  { name: "SAFARICOM ETHIOPIA", logo: clientD },
 ];
 
 const marqueeAnimation = {
@@ -29,8 +34,18 @@ const marqueeAnimation = {
 };
 
 const ClientsSection = () => {
+  const [logoRatios, setLogoRatios] = useState<Record<string, number>>({});
+
+  const handleLogoLoad = (name: string) => (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget;
+
+    if (naturalWidth && naturalHeight && !logoRatios[name]) {
+      setLogoRatios((prev) => ({ ...prev, [name]: naturalWidth / naturalHeight }));
+    }
+  };
+
   return (
-    <section id="clients" className="relative py-20 md:py-28 overflow-hidden bg-white text-foreground">
+    <section id="clients" className="relative py-14 md:py-18 overflow-hidden bg-white text-foreground">
       <div className="absolute inset-y-0 left-0 w-24 pointer-events-none bg-gradient-to-r from-white via-white/70 to-transparent" />
       <div className="absolute inset-y-0 right-0 w-24 pointer-events-none bg-gradient-to-l from-white via-white/70 to-transparent" />
 
@@ -44,29 +59,44 @@ const ClientsSection = () => {
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--gold)_/_0.3)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
             <Sparkles className="h-4 w-4 text-gold" />
-            Trusted by teams
+            Our Clients
           </div>
           <div className="h-px flex-1 bg-gradient-to-r from-[hsl(var(--gold)_/_0.4)] via-[hsl(var(--gold)_/_0.1)] to-transparent" />
         </motion.div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--gold)_/_0.18)] bg-white/70 shadow-[0_25px_70px_-30px_rgba(0,0,0,0.25)]">
+        <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--gold)_/_0.18)] bg-black/70 shadow-[0_25px_70px_-30px_rgba(0,0,0,0.25)]">
           <motion.div
             variants={marqueeAnimation}
             animate="animate"
-            className="flex gap-12 py-12 px-8"
+            className="flex gap-12 py-8 px-8"
           >
-            {[...clients, ...clients].map((client, index) => (
-              <div
-                key={`${client.name}-${index}`}
-                className="flex h-24 w-48 items-center justify-center rounded-2xl bg-white shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
-              >
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="max-h-16 max-w-[170px] object-contain"
-                />
-              </div>
-            ))}
+            {[...clients, ...clients].map((client, index) => {
+              const ratio = logoRatios[client.name] ?? 1.6;
+
+              return (
+                <div
+                  key={`${client.name}-${index}`}
+                  className="flex w-[13rem] min-w-[11rem] max-w-[15rem] flex-col items-center gap-3 rounded-2xl bg-black/25 px-4 py-4 shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
+                >
+                  <div
+                    className="relative w-full"
+                    style={{ aspectRatio: ratio }}
+                  >
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[hsl(var(--gold)_/_0.08)] via-white/10 to-transparent" />
+                    <div className="relative grid h-full w-full place-items-center rounded-xl border border-[hsl(var(--gold)_/_0.18)] bg-black/40 backdrop-blur-sm">
+                      <img
+                        src={client.logo}
+                        alt={`${client.name} logo`}
+                        loading="lazy"
+                        onLoad={handleLogoLoad(client.name)}
+                        className="h-full w-full object-contain p-3"
+                      />
+                    </div>
+                  </div>
+                  <span className="px-2 text-xs font-medium leading-tight text-center text-foreground/80">{client.name}</span>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
