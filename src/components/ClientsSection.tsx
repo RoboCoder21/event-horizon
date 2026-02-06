@@ -70,15 +70,18 @@ const ClientsSection = () => {
           >
             {[...clients, ...clients].map((client, index) => {
               const ratio = logoRatios[client.name] ?? 1.6;
+              const tileWidthRem = Math.min(Math.max(ratio * 8, 9), 16);
+              const tileAspect = ratio >= 1 ? ratio : 1 / ratio;
 
               return (
                 <div
                   key={`${client.name}-${index}`}
-                  className="flex w-[13rem] min-w-[11rem] max-w-[15rem] flex-col items-center gap-3 rounded-2xl bg-black/25 px-4 py-4 shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
+                  className="flex shrink-0 flex-col items-center gap-3 rounded-2xl bg-black/25 px-4 py-4 shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
+                  style={{ width: `${tileWidthRem}rem` }}
                 >
                   <div
                     className="relative w-full"
-                    style={{ aspectRatio: ratio }}
+                    style={{ aspectRatio: tileAspect }}
                   >
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[hsl(var(--gold)_/_0.08)] via-white/10 to-transparent" />
                     <div className="relative grid h-full w-full place-items-center rounded-xl border border-[hsl(var(--gold)_/_0.18)] bg-black/40 backdrop-blur-sm">
@@ -87,7 +90,7 @@ const ClientsSection = () => {
                         alt={`${client.name} logo`}
                         loading="lazy"
                         onLoad={handleLogoLoad(client.name)}
-                        className="h-full w-full object-contain p-3"
+                        className="h-full w-full object-contain p-2 sm:p-3"
                       />
                     </div>
                   </div>
