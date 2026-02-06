@@ -75,7 +75,10 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 md:py-32 relative overflow-hidden scroll-mt-28 md:scroll-mt-32"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal/30 to-background" />
       

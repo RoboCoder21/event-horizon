@@ -26,7 +26,10 @@ const proof = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden">
+    <section
+      id="about"
+      className="py-24 md:py-32 relative overflow-hidden scroll-mt-28 md:scroll-mt-32"
+    >
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/6 rounded-full blur-3xl -translate-y-1/2" />
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-electric/6 rounded-full blur-3xl -translate-y-1/2" />

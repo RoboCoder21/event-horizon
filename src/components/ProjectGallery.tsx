@@ -63,7 +63,10 @@ const ProjectGallery = () => {
     : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="relative py-24 md:py-32">
+    <section
+      id="portfolio"
+      className="relative py-24 md:py-32 scroll-mt-28 md:scroll-mt-32"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal/50 to-background" />
       <div className="absolute inset-0 opacity-10"
         style={{

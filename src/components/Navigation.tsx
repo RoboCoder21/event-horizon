@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import logo from "../logofile/yeme new-02.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -17,17 +17,26 @@ const navLinks = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  const scrollToHash = useCallback((href: string) => {
+    if (!href.startsWith("#")) return;
+
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const headerHeight = headerRef.current?.offsetHeight ?? 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+
+    window.scrollTo({ top, behavior: "smooth" });
+  }, []);
 
   const handleNavClick = (href: string) => (event: React.MouseEvent) => {
     if (!href.startsWith("#")) return;
     event.preventDefault();
-    const target = document.querySelector(href);
-    if (target instanceof HTMLElement) {
-      const offset = 88; // account for fixed header height
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
     setIsMobileMenuOpen(false);
+    requestAnimationFrame(() => scrollToHash(href));
   };
 
   useEffect(() => {
@@ -38,8 +47,15 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (window.location.hash) {
+      scrollToHash(window.location.hash);
+    }
+  }, [scrollToHash]);
+
   return (
     <motion.header
+      ref={headerRef}
       initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.01, ease: "linear" }}

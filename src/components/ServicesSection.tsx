@@ -59,11 +59,20 @@ const services = [
     description: "Editors, animators, and color working in lockstep with the show floor.",
     meta: "Edit bays / VFX / color",
   },
+    {
+    icon: Workflow,
+    title: "360 Degre Agency",
+    description: "full-service marketing and communications firm that handles all aspects of a brand's strategy under one roof.",
+ 
+  },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
+    <section
+      id="services"
+      className="relative py-24 md:py-32 overflow-hidden scroll-mt-28 md:scroll-mt-32"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal/60 to-background" />
       <div
         className="absolute inset-0 opacity-10"

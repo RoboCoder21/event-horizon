@@ -73,7 +73,10 @@ const ClientsSection = () => {
   }, [startLoop]);
 
   return (
-    <section id="clients" className="relative py-14 md:py-18 overflow-hidden bg-white text-foreground">
+    <section
+      id="clients"
+      className="relative py-14 md:py-18 overflow-hidden bg-white text-foreground scroll-mt-28 md:scroll-mt-32"
+    >
       <div className="absolute inset-y-0 left-0 w-24 pointer-events-none bg-gradient-to-r from-white via-white/70 to-transparent" />
       <div className="absolute inset-y-0 right-0 w-24 pointer-events-none bg-gradient-to-l from-white via-white/70 to-transparent" />
 
