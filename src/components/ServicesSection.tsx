@@ -61,7 +61,7 @@ const services = [
   },
     {
     icon: Workflow,
-    title: "360 Degre Agency",
+    title: "360 Degree Agency",
     description: "full-service marketing and communications firm that handles all aspects of a brand's strategy under one roof.",
  
   },
