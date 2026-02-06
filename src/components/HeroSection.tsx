@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/images/IMG_0272 - Copy.jpg";
 
 const capabilities = [
-  "Branding & creative",
+  
   "Event solutions",
   "Audio / video",
   "Digital launches",
@@ -88,12 +88,12 @@ const HeroSection = () => {
         <img
           src={heroImage}
           alt="Stage production backdrop"
-          className="h-full w-full object-cover brightness-75 contrast-110"
+          className="h-full w-full object-cover brightness-[0.82] contrast-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/92 via-background/80 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/82 via-background/48 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/88 via-background/72 to-background/96" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/82 via-background/42 to-transparent" />
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.18]"
+          className="pointer-events-none absolute inset-0 opacity-[0.08]"
           style={{
             backgroundImage:
               "radial-gradient(circle at 20% 20%, hsl(var(--gold) / 0.25), transparent 34%)," +
@@ -102,7 +102,7 @@ const HeroSection = () => {
           }}
         />
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-8"
           style={{
             backgroundImage:
               "linear-gradient(90deg, hsl(var(--gold) / 0.26) 1px, transparent 1px)," +
@@ -113,8 +113,8 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center justify-center">
-          <div className="lg:col-span-10 space-y-8 max-w-5xl mx-auto text-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 place-items-center">
+          <div className="lg:col-start-3 lg:col-end-11 xl:col-start-4 xl:col-end-10 space-y-8 max-w-5xl w-full mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
