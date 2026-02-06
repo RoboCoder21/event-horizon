@@ -4,9 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ParticleField from "@/components/ParticleField";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Showcase from "./pages/Showcase";
+import Index from "@/pages/Index";
+import NotFound from "@/pages/NotFound";
+import Showcase from "@/pages/Showcase";
 
 const queryClient = new QueryClient();
 

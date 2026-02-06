@@ -1,24 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import clientA from "@/images/download.png";
-import clientB from "@/images/258ad022-6ecb-4715-9a45-4516a489a83a.jpg";
-import clientC from "@/images/Picture1.png";
-import clientD from "@/images/IMG_0777.jpg";
-import clientE from "@/images/e4166970-390a-422d-a108-0f07aeb38c8d.jpg";
-import clientF from "@/images/448b33da-a8c0-42ae-a3ff-c43b3536e530.jpg";
+import embassyLogo from "@/client logos/EMBASSY_OF_THE_KUWAIT.png";
+import ethioTelecomLogo from "@/client logos/Ethio telecom.jpg";
+import pressAgencyLogo from "@/client logos/ETHIOPIAN PRESS AGENCY.png";
+import icsLogo from "@/client logos/ICS ETHIOPIA.png";
+import jubilationLogo from "@/client logos/JUBILATION AFRICA.png";
+import agricultureLogo from "@/client logos/MINISTRY OF AGRICULTURE.png";
+import safaricomLogo from "@/client logos/SAFARICOM ETHIOPIA.png";
 
 const clients = [
-  { name: "KURUFUD EVENT", logo: clientA },
-  { name: "JUBILATION AFRICA", logo: clientB },
-  { name: "ETHIO TELECOM", logo: clientC },
-  { name: "ETHIOPIAN PRESS AGENCY", logo: clientD },
-  { name: "MINISTRY OF AGRICULTURE", logo: clientE },
-  { name: "EMBASSY OF THE STATE OF KUWAIT", logo: clientF },
-  { name: "STARTUP ETHIOPIA", logo: clientA },
-  { name: "ICS ETHIOPIA", logo: clientB },
-  { name: "ETHIOPIAN PRESS AGENCY", logo: clientC },
-  { name: "SAFARICOM ETHIOPIA", logo: clientD },
+  { name: "JUBILATION AFRICA", logo: jubilationLogo },
+  { name: "ETHIO TELECOM", logo: ethioTelecomLogo },
+  { name: "ETHIOPIAN PRESS AGENCY", logo: pressAgencyLogo },
+  { name: "ICS ETHIOPIA", logo: icsLogo },
+  { name: "SAFARICOM ETHIOPIA", logo: safaricomLogo },
+  { name: "MINISTRY OF AGRICULTURE", logo: agricultureLogo },
+  { name: "EMBASSY OF THE STATE OF KUWAIT", logo: embassyLogo },
 ];
 
 const marqueeAnimation = {
