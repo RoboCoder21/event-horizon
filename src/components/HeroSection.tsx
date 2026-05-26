@@ -115,16 +115,6 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10 py-24 lg:py-32">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 place-items-center">
           <div className="lg:col-start-3 lg:col-end-11 xl:col-start-4 xl:col-end-10 space-y-8 max-w-5xl w-full mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-3 glass rounded-full px-4 py-2 text-xs uppercase tracking-[0.25em] text-muted-foreground"
-            >
-              <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-              Live + Hybrid + Film
-            </motion.div>
-
             <motion.h1
               variants={headingVariants}
               initial="hidden"

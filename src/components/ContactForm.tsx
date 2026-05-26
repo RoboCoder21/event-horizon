@@ -104,9 +104,17 @@ const ContactForm = () => {
             {/* Contact Info */}
             <div className="space-y-6">
               {[
-                { icon: MapPin, label: "HQ", value: "Addis Ababa, Ethiopia" },
-                { icon: Phone, label: "Phone", value: "+251 91 123 4567" },
-                { icon: Mail, label: "Email", value: "hello@magna.studio" },
+                {
+                  icon: MapPin,
+                  label: "HQ",
+                  value: "MESKEL FLOWER BEHIND DREAMLINER HOTEL JEMA BUILDING 6TH FLOOR",
+                },
+                {
+                  icon: Phone,
+                  label: "Phone",
+                  value: "+251942888555\n+251911605758\n+251911345531",
+                },
+                { icon: Mail, label: "Email", value: "MAGNAPROMOTION@GMAIL.COM" },
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -121,7 +129,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <div className="text-sm text-muted-foreground">{item.label}</div>
-                    <div className="font-medium">{item.value}</div>
+                    <div className="font-medium whitespace-pre-line">{item.value}</div>
                   </div>
                 </motion.div>
               ))}
