@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/images/IMG_0272 - Copy.jpg";
 
 const capabilities = [
-  
-  "Event solutions",
-  "Audio / video",
-  "Digital launches",
-  "Experience strategy",
+  { label: "Event solutions", href: "#services" },
+  { label: "Audio / video", href: "#portfolio" },
+  { label: "Digital launches", href: "#portfolio" },
+  { label: "Experience strategy", href: "#about" },
 ];
 
 const headlinePhrases = [
@@ -198,13 +197,15 @@ const HeroSection = () => {
               className="flex flex-wrap gap-3 justify-center"
             >
               {capabilities.map((item) => (
-                <motion.span
-                  key={item}
+                <motion.a
+                  key={item.label}
                   variants={pillVariants}
-                  className="glass rounded-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  href={item.href}
+                  className="glass rounded-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center"
+                  aria-label={`Jump to ${item.label.toLowerCase()}`}
                 >
-                  {item}
-                </motion.span>
+                  {item.label}
+                </motion.a>
               ))}
             </motion.div>
           </div>
