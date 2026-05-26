@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { animate, motion, useMotionValue } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import embassyLogo from "@/client logos/EMBASSY_OF_THE_KUWAIT.png";
-import ethioTelecomLogo from "@/client logos/Ethio telecom.jpg";
+import ethioTelecomLogo from "@/client logos/Ethio telecom.png";
 import pressAgencyLogo from "@/client logos/ETHIOPIAN PRESS AGENCY.png";
 import icsLogo from "@/client logos/ICS ETHIOPIA.png";
 import jubilationLogo from "@/client logos/JUBILATION AFRICA.png";
