@@ -91,14 +91,11 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-gold text-sm font-semibold tracking-wider uppercase mb-4 block">
-              Let’s build your next drop
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Tell us about the <span className="text-gradient-gold">experience</span> you need.
+            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
+              Let’s <span className="text-gradient-gold">talk.</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-12 max-w-md">
-              Give us the headline, the audience, and the date. We’ll map the story, crew, and tech to deliver it without static.
+            <p className="text-muted-foreground text-xl mb-12 max-w-md">
+              Our Team is excited to collaborate with you.
             </p>
 
             {/* Contact Info */}

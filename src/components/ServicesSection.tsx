@@ -13,57 +13,39 @@ import {
 const services = [
   {
     icon: Lightbulb,
-    title: "Creative & strategy",
-    description: "Concept, story, and visual language that anchor every experience.",
-    meta: "Branding / art direction / scripting",
-  },
-  {
-    icon: CalendarRange,
-    title: "Event solutions",
-    description: "End-to-end shows, summits, launches, and award nights—planned and run by one crew.",
-    meta: "Run of show / talent / stagecraft",
-  },
-  {
-    icon: Clapperboard,
-    title: "Audio + video",
-    description: "Cinematic capture, live switching, multicam streaming, and fast post drops.",
-    meta: "TVC / docu / livestream / highlight films",
-  },
-  {
-    icon: Radio,
-    title: "Broadcast & streaming",
-    description: "Control rooms that sync with your platforms—studio or on-site anywhere.",
-    meta: "Hybrid events / broadcast engineering",
+    title: "Branding & Creative",
+    description: "We specialize in creating captivating experiences that resonate with your audience, ensuring your brand stands out from the crowd.",
+    meta: "Branding / Art Direction / Design",
   },
   {
     icon: Layers,
-    title: "Scenic & lighting",
-    description: "Stage design, LED, lighting design, and show cues that move with the music.",
-    meta: "Fabrication / rigging / pixels / cues",
+    title: "Web & Interactive",
+    description: "Specializing in crafting user-friendly interfaces that seamlessly align with your objectives in the vast digital universe.",
+    meta: "Web / App Design / UI/UX",
   },
   {
-    icon: Zap,
-    title: "Experience ops",
-    description: "Touring crews, technical riders, logistics, and vendor orchestration.",
-    meta: "Production management / touring",
+    icon: Clapperboard,
+    title: "Audio & Video",
+    description: "Our dedicated team crafts exceptional visual solutions that resonate with your audience on a whole new level.",
+    meta: "TVC / Docu / Livestream / Highlight films",
+  },
+  {
+    icon: CalendarRange,
+    title: "Event Solution",
+    description: "Elevate your event to new heights with us. Our mission is to deliver the best and exceptional results that leave a lasting impact.",
+    meta: "Run of Show / Logistics / Stagecraft",
   },
   {
     icon: Sparkle,
-    title: "Digital rollouts",
-    description: "Launch pages, motion systems, and campaign assets that extend the moment online.",
-    meta: "Web / motion / social kits",
+    title: "Digital Marketing",
+    description: "We are the powerhouse that propels your brand to new heights, resolving the complexities of the digital landscape with our expert strategies.",
+    meta: "Social / SEO / Paid Media",
   },
   {
-    icon: Workflow,
-    title: "Content lab",
-    description: "Editors, animators, and color working in lockstep with the show floor.",
-    meta: "Edit bays / VFX / color",
-  },
-    {
-    icon: Workflow,
-    title: "360 Degree Agency",
-    description: "full-service marketing and communications firm that handles all aspects of a brand's strategy under one roof.",
- 
+    icon: Radio,
+    title: "Communication Services",
+    description: "We excel at connecting brands with their audiences through effective strategies and compelling messaging.",
+    meta: "PR / Media Relations / Copywriting",
   },
 ];
 
@@ -94,10 +76,10 @@ const ServicesSection = () => {
           >
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">Services</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
-              Full-stack production with a <span className="text-gradient-gold">single point of control.</span>
+              Comprehensive expertise from a <span className="text-gradient-gold">single center.</span>
             </h2>
             <p className="text-muted-foreground text-lg">
-              One team aligned on story, staging, cameras, light, and delivery. We keep creative, technical, and logistics under the same roof so your show never loses its signal.
+              We offer comprehensive event organizing, branding, creative solutions, and web & interactive designs all conveniently offered from one center.
             </p>
      
           </motion.div>

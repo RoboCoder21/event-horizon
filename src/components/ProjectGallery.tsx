@@ -8,49 +8,49 @@ import projectImg4 from "@/images/d258d29c-55b5-4554-8ed9-3387151edeee.jpg";
 import projectImg5 from "@/images/f55db937-43b3-4cfb-8bfd-82dfcbb23013.jpg";
 import projectImg6 from "@/images/8e749a6b-d2be-4917-b692-3ac3112bff12.jpg";
 
-const categories = ["All", "Corporate", "Wedding", "Concert", "Festival"];
+const categories = ["All", "Event Solution", "Featured", "Interaction Design", "Web & Digital"];
 
 const projects = [
   {
     id: 1,
-    title: "Tech Summit 2024",
-    client: "Innovation Corp",
-    category: "Corporate",
+    title: "Amhara Bank Anniversary",
+    client: "Amhara Bank",
+    category: "Event Solution",
     image: projectImg1,
   },
   {
     id: 2,
-    title: "Garden Ceremony",
-    client: "Sarah & Michael",
-    category: "Wedding",
+    title: "Awach TVC",
+    client: "Awach",
+    category: "Featured",
     image: projectImg2,
   },
   {
     id: 3,
-    title: "Electric Nights Tour",
-    client: "Universal Music",
-    category: "Concert",
+    title: "SDG Finance Academy 2024",
+    client: "UNDP",
+    category: "Event Solution",
     image: projectImg3,
   },
   {
     id: 4,
-    title: "Annual Gala Dinner",
-    client: "Luxury Hotels Group",
-    category: "Corporate",
+    title: "Village Enterprise",
+    client: "UNICEF",
+    category: "Interaction Design",
     image: projectImg4,
   },
   {
     id: 5,
-    title: "Summer Music Festival",
-    client: "City Events",
-    category: "Festival",
+    title: "Pepsi New Logo Launch",
+    client: "Pepsi",
+    category: "Featured",
     image: projectImg5,
   },
   {
     id: 6,
-    title: "Elegant Reception",
-    client: "Emma & James",
-    category: "Wedding",
+    title: "Annual Report for NCA",
+    client: "Norwegian Church AID",
+    category: "Web & Digital",
     image: projectImg6,
   },
 ];
@@ -90,13 +90,13 @@ const ProjectGallery = () => {
               Selected projects
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight">
-              Outcomes that travel from stage to screen.
+              Passionate team crafting <br className="hidden md:block"/> deeply connected brands.
             </h2>
             <p className="text-muted-foreground text-lg mt-3 max-w-2xl">
-              Each show is built with broadcast discipline—so every attendee, viewer, and stakeholder catches the same energy.
+              We enable stable, successful and anchored relationships between businesses and customers through deeply connected services.
             </p>
           </div>
-          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Hybrid / Event / Film / Digital</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Filter by</p>
         </motion.div>
 
         {/* Category Filter */}
@@ -148,7 +148,7 @@ const ProjectGallery = () => {
                 <div className="absolute inset-0 p-6 flex flex-col justify-between">
                   <div className="flex items-center justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
                     <span>{project.category}</span>
-                    <span className="glass px-3 py-1 rounded-full">Live / Media</span>
+                    <span className="glass px-3 py-1 rounded-full">View</span>
                   </div>
                   <div className="space-y-1">
                     <h3 className="text-2xl font-display font-semibold">{project.title}</h3>
