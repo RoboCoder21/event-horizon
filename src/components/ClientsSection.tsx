@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { animate, motion, useMotionValue } from "framer-motion";
-import { Sparkles, Trophy, Users, CheckCircle } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import embassyLogo from "@/client logos/EMBASSY_OF_THE_KUWAIT.png";
 import ethioTelecomLogo from "@/client logos/Ethio telecom.png";
 import pressAgencyLogo from "@/client logos/ETHIOPIAN PRESS AGENCY.png";
@@ -17,12 +17,6 @@ const clients = [
   { name: "SAFARICOM ETHIOPIA", logo: safaricomLogo },
   { name: "MINISTRY OF AGRICULTURE", logo: agricultureLogo },
   { name: "EMBASSY OF THE STATE OF KUWAIT", logo: embassyLogo },
-];
-
-const stats = [
-  { label: "Years of Experience", value: "10+", icon: Trophy },
-  { label: "Happy Clients", value: "200+", icon: Users },
-  { label: "Successful Projects", value: "500+", icon: CheckCircle },
 ];
 
 const ClientsSection = () => {
@@ -81,108 +75,84 @@ const ClientsSection = () => {
   return (
     <section
       id="clients"
-      className="relative py-14 md:py-24 overflow-hidden bg-white text-foreground scroll-mt-28 md:scroll-mt-32"
+      className="relative py-14 md:py-18 overflow-hidden bg-white text-foreground scroll-mt-28 md:scroll-mt-32"
     >
-      <div className="container mx-auto px-6 relative z-10 space-y-16">
-        
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center justify-center p-8 bg-zinc-50 rounded-3xl border border-zinc-100 shadow-sm"
-            >
-              <stat.icon className="w-10 h-10 text-gold mb-4" />
-              <h3 className="text-4xl font-display font-bold text-charcoal mb-2">{stat.value}</h3>
-              <p className="text-sm uppercase tracking-widest text-muted-foreground">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
+      <div className="absolute inset-y-0 left-0 w-24 pointer-events-none bg-gradient-to-r from-white via-white/70 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-24 pointer-events-none bg-gradient-to-l from-white via-white/70 to-transparent" />
 
+      <div className="container mx-auto px-6 relative z-10 space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="flex flex-col md:flex-row md:items-center justify-between gap-6"
+          className="flex items-center gap-3"
         >
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--gold)_/_0.3)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground shadow-sm mb-4">
-              <Sparkles className="h-4 w-4 text-gold" />
-              Our Clients
-            </div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-charcoal">
-              Trusted by industry leaders.
-            </h2>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--gold)_/_0.3)] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
+            <Sparkles className="h-4 w-4 text-gold" />
+            Our Clients
           </div>
+          <div className="h-px flex-1 bg-gradient-to-r from-[hsl(var(--gold)_/_0.4)] via-[hsl(var(--gold)_/_0.1)] to-transparent" />
         </motion.div>
 
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-24 pointer-events-none bg-gradient-to-r from-white via-white/70 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 pointer-events-none bg-gradient-to-l from-white via-white/70 to-transparent z-10" />
-          
-          <div
-            ref={viewportRef}
-            className="relative overflow-hidden rounded-3xl border border-[hsl(var(--gold)_/_0.18)] bg-black/70 shadow-[0_25px_70px_-30px_rgba(0,0,0,0.25)]"
+        <div
+          ref={viewportRef}
+          className="relative overflow-hidden rounded-3xl border border-[hsl(var(--gold)_/_0.18)] bg-black/70 shadow-[0_25px_70px_-30px_rgba(0,0,0,0.25)]"
+        >
+          <motion.div
+            ref={trackRef}
+            style={{ x }}
+            drag="x"
+            dragConstraints={{ left: -4000, right: 4000 }}
+            dragElastic={0.12}
+            dragMomentum={true}
+            onDragStart={() => {
+              loopRef.current?.stop();
+            }}
+            onDragEnd={() => {
+              const distance = getLoopDistance();
+              if (distance > 0) {
+                // Normalize current offset to stay within the visible window
+                const current = x.get();
+                const normalized = ((current % distance) + distance) % distance;
+                const resumeFrom = -normalized;
+                x.set(resumeFrom);
+                startLoop(resumeFrom);
+              }
+            }}
+            className="flex gap-12 py-8 px-8 cursor-grab active:cursor-grabbing"
           >
-            <motion.div
-              ref={trackRef}
-              style={{ x }}
-              drag="x"
-              dragConstraints={{ left: -4000, right: 4000 }}
-              dragElastic={0.12}
-              dragMomentum={true}
-              onDragStart={() => {
-                loopRef.current?.stop();
-              }}
-              onDragEnd={() => {
-                const distance = getLoopDistance();
-                if (distance > 0) {
-                  const current = x.get();
-                  const normalized = ((current % distance) + distance) % distance;
-                  const resumeFrom = -normalized;
-                  x.set(resumeFrom);
-                  startLoop(resumeFrom);
-                }
-              }}
-              className="flex gap-12 py-8 px-8 cursor-grab active:cursor-grabbing"
-            >
-              {[...clients, ...clients].map((client, index) => {
-                const ratio = logoRatios[client.name] ?? 1.6;
-                const tileWidthRem = Math.min(Math.max(ratio * 8, 9), 16);
-                const tileAspect = ratio >= 1 ? ratio : 1 / ratio;
+            {[...clients, ...clients].map((client, index) => {
+              const ratio = logoRatios[client.name] ?? 1.6;
+              const tileWidthRem = Math.min(Math.max(ratio * 8, 9), 16);
+              const tileAspect = ratio >= 1 ? ratio : 1 / ratio;
 
-                return (
+              return (
+                <div
+                  key={`${client.name}-${index}`}
+                  className="flex shrink-0 flex-col items-center gap-3 rounded-2xl bg-black/25 px-4 py-4 shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
+                  style={{ width: `${tileWidthRem}rem` }}
+                >
                   <div
-                    key={`${client.name}-${index}`}
-                    className="flex shrink-0 flex-col items-center gap-3 rounded-2xl bg-black/25 px-4 py-4 shadow-sm border border-[hsl(var(--gold)_/_0.18)]"
-                    style={{ width: `${tileWidthRem}rem` }}
+                    className="relative w-full"
+                    style={{ aspectRatio: tileAspect }}
                   >
-                    <div
-                      className="relative w-full"
-                      style={{ aspectRatio: tileAspect }}
-                    >
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[hsl(var(--gold)_/_0.08)] via-white/10 to-transparent" />
-                      <div className="relative grid h-full w-full place-items-center rounded-xl border border-[hsl(var(--gold)_/_0.18)] bg-black/40 backdrop-blur-sm">
-                        <img
-                          src={client.logo}
-                          alt={`${client.name} logo`}
-                          loading="lazy"
-                          onLoad={handleLogoLoad(client.name)}
-                          className="h-full w-full object-contain p-2 sm:p-3"
-                        />
-                      </div>
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[hsl(var(--gold)_/_0.08)] via-white/10 to-transparent" />
+                    <div className="relative grid h-full w-full place-items-center rounded-xl border border-[hsl(var(--gold)_/_0.18)] bg-black/40 backdrop-blur-sm">
+                      <img
+                        src={client.logo}
+                        alt={`${client.name} logo`}
+                        loading="lazy"
+                        onLoad={handleLogoLoad(client.name)}
+                        className="h-full w-full object-contain p-2 sm:p-3"
+                      />
                     </div>
-                    <span className="px-2 text-xs font-medium leading-tight text-center text-foreground/80">{client.name}</span>
                   </div>
-                );
-              })}
-            </motion.div>
-          </div>
+                  <span className="px-2 text-xs font-medium leading-tight text-center text-foreground/80">{client.name}</span>
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </section>
